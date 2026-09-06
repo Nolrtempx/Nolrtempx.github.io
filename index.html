@@ -155,6 +155,11 @@
     border:2px solid rgba(255,255,255,0.12);
   }
   .link-tile .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .link-tile .thumb.icon-thumb{
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(160deg, #1c1c21, #0c0c0e);
+  }
+  .link-tile .thumb.icon-thumb svg{width:26px;height:26px;stroke:var(--accent-2);}
   .link-tile .text{flex:1;min-width:0;}
   .link-tile .name{
     font-family:'Bebas Neue',sans-serif;
@@ -183,72 +188,57 @@
     text-align:center;
   }
 
-  /* ---------- slide to pay ---------- */
-  .slide-wrap{
+  /* ---------- top warning banner ---------- */
+  .wifi-alert{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    border-radius:14px;
+    background:linear-gradient(160deg, rgba(255,36,56,0.16), rgba(255,36,56,0.06));
+    border:1.5px solid var(--accent);
+    box-shadow:0 0 0 1px rgba(255,36,56,0.15), 0 0 26px -4px var(--glow);
+    animation:alertpulse 1.8s ease-in-out infinite;
+  }
+  @keyframes alertpulse{
+    0%,100%{box-shadow:0 0 0 1px rgba(255,36,56,0.15), 0 0 26px -4px var(--glow);}
+    50%{box-shadow:0 0 0 1px rgba(255,36,56,0.3), 0 0 40px -2px var(--glow);}
+  }
+  .wifi-alert svg{width:26px;height:26px;flex:none;stroke:var(--accent-2);}
+  .wifi-alert .txt{font-size:13px;line-height:1.6;color:#fff;}
+  .wifi-alert .txt b{
+    display:block;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:17px;
+    letter-spacing:0.5px;
+    color:var(--accent-2);
+    margin-bottom:2px;
+  }
+
+  /* ---------- next page button ---------- */
+  .next-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     width:100%;
     margin-top:30px;
-  }
-  .slide-track{
-    position:relative;
-    width:100%;
-    height:60px;
-    border-radius:30px;
-    background:linear-gradient(165deg, var(--panel-2) 0%, var(--panel) 60%, #0a0a0c 100%);
-    border:1px solid var(--line);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.06),
-      inset 0 -1px 0 rgba(0,0,0,0.4),
-      0 16px 34px -16px rgba(0,0,0,0.85);
-    overflow:hidden;
-    touch-action:none;
-    user-select:none;
-  }
-  .slide-fill{
-    position:absolute;
-    top:0;left:0;bottom:0;
-    width:60px;
-    border-radius:30px;
+    padding:19px 24px;
+    border-radius:14px;
+    text-decoration:none;
+    color:#fff;
     background:linear-gradient(180deg, var(--accent-2), var(--accent) 70%, #b3121f);
-    box-shadow:0 0 24px -4px var(--glow);
-    transition:width .05s linear;
-  }
-  .slide-label{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
     font-family:'Bebas Neue',sans-serif;
-    font-size:16px;
-    letter-spacing:1.5px;
-    color:var(--ink-dim);
-    pointer-events:none;
-    gap:8px;
+    font-size:18px;
+    letter-spacing:1px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      inset 0 -3px 8px rgba(0,0,0,0.35),
+      0 16px 34px -10px rgba(255,36,56,0.5);
+    transition:transform .18s;
   }
-  .slide-label svg{width:16px;height:16px;stroke:var(--ink-dim);animation:chevpulse 1.6s ease-in-out infinite;}
-  @keyframes chevpulse{0%,100%{opacity:.4;transform:translateX(0);}50%{opacity:1;transform:translateX(4px);}}
-  .slide-handle{
-    position:absolute;
-    top:4px;left:4px;
-    width:52px;height:52px;
-    border-radius:50%;
-    background:linear-gradient(180deg, #fff, #d8d8d8);
-    box-shadow:0 6px 16px -4px rgba(0,0,0,0.6);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:grab;
-    z-index:2;
-  }
-  .slide-handle:active{cursor:grabbing;}
-  .slide-handle svg{width:20px;height:20px;stroke:#111;}
-  .slide-caption{
-    text-align:center;
-    margin-top:10px;
-    font-size:11.5px;
-    color:var(--ink-dim);
-    font-family:'JetBrains Mono',monospace;
-  }
+  .next-btn:active{transform:scale(0.98);}
+  .next-btn svg{width:18px;height:18px;flex:none;}
 
   @media (prefers-reduced-motion: reduce){
     .bg-photo img, .brand-ring{animation:none;}
@@ -318,74 +308,46 @@
       <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
     </a>
 
+    <div class="wifi-alert">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4"/><circle cx="12" cy="16.5" r="0.6" fill="currentColor" stroke="none"/><path d="M3 8.5a15 15 0 0 1 18 0"/><path d="M6.5 12a10 10 0 0 1 11 0"/><path d="M2 2l20 20"/></svg>
+      <div class="txt">
+        <b>ปิด Wi-Fi ก่อนกดลิงก์!</b>
+        สลับไปใช้เน็ตมือถือ (4G/5G) ก่อนทำรายการ ไม่งั้นลิงก์จะกดไม่เข้า
+      </div>
+    </div>
+
+    <a class="link-tile" href="https://t.me/nolrtemp" rel="noopener">
+      <div class="thumb icon-thumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 4L2.5 11.5l6 2 1.5 6 3-4 4.5 3.5L21 4z"/><path d="M8.5 13.5L18 6"/></svg>
+      </div>
+      <div class="text">
+        <div class="name">Telegram (กลุ่มฟรี)</div>
+        <div class="handle">t.me/nolrtemp</div>
+      </div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+
+    <a class="link-tile" href="https://t.me/Nolrtempx_bot" rel="noopener">
+      <div class="thumb icon-thumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 4L2.5 11.5l6 2 1.5 6 3-4 4.5 3.5L21 4z"/><path d="M8.5 13.5L18 6"/></svg>
+      </div>
+      <div class="text">
+        <div class="name">Telegram สมัครสมาชิก</div>
+        <div class="handle">t.me/Nolrtempx_bot</div>
+      </div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+
   </div>
 
   <div class="foot-note">create your own path</div>
 
-  <div class="slide-wrap">
-    <div class="slide-track" id="slideTrack">
-      <div class="slide-fill" id="slideFill"></div>
-      <div class="slide-label">
-        เลื่อนเพื่อชำระเงินในขั้นตอนต่อไป
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
-      </div>
-      <div class="slide-handle" id="slideHandle">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
-      </div>
-    </div>
-    <div class="slide-caption">ปัดขวาเพื่อไปหน้าชำระเงิน</div>
-  </div>
+  <a class="next-btn" href="profile.html#payment">
+    ไปหน้าชำระเงินในขั้นตอนต่อไป
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+  </a>
 
 </div>
-
-<script>
-(function(){
-  const track = document.getElementById('slideTrack');
-  const handle = document.getElementById('slideHandle');
-  const fill = document.getElementById('slideFill');
-  let dragging = false, startX = 0, maxX = 0;
-
-  function setup(){ maxX = track.offsetWidth - handle.offsetWidth - 8; }
-  setup();
-  window.addEventListener('resize', setup);
-
-  function pointerX(e){ return (e.touches ? e.touches[0].clientX : e.clientX); }
-
-  function onStart(e){
-    dragging = true;
-    startX = pointerX(e) - handle.offsetLeft;
-    handle.style.transition = 'none';
-    fill.style.transition = 'none';
-  }
-  function onMove(e){
-    if(!dragging) return;
-    let x = pointerX(e) - startX;
-    x = Math.max(4, Math.min(maxX, x));
-    handle.style.left = x + 'px';
-    fill.style.width = (x + handle.offsetWidth) + 'px';
-    if(x >= maxX - 2){
-      dragging = false;
-      window.location.href = 'profile.html#payment';
-    }
-  }
-  function onEnd(){
-    if(!dragging) return;
-    dragging = false;
-    handle.style.transition = 'left .25s ease';
-    fill.style.transition = 'width .25s ease';
-    handle.style.left = '4px';
-    fill.style.width = '60px';
-  }
-
-  handle.addEventListener('mousedown', onStart);
-  handle.addEventListener('touchstart', onStart, {passive:true});
-  window.addEventListener('mousemove', onMove);
-  window.addEventListener('touchmove', onMove, {passive:true});
-  window.addEventListener('mouseup', onEnd);
-  window.addEventListener('touchend', onEnd);
-})();
-</script>
-
 
 </body>
 </html>

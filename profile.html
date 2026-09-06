@@ -483,85 +483,13 @@
     font-family:'JetBrains Mono',monospace;
   }
 
-  /* ---------- age gate modal ---------- */
-  .age-gate-overlay{
-    position:fixed;
-    inset:0;
-    z-index:999;
-    background:rgba(4,4,5,0.82);
-    backdrop-filter:blur(6px);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-  }
-  .age-gate-card{
-    width:100%;
-    max-width:380px;
-    background:#ffffff;
-    border-radius:16px;
-    padding:32px 26px 24px;
-    text-align:center;
-    box-shadow:0 30px 70px -20px rgba(0,0,0,0.7);
-  }
-  .age-gate-card svg{
-    width:46px;height:46px;
-    stroke:#111;
-    margin-bottom:16px;
-  }
-  .age-gate-card h2{
-    font-family:'Inter',sans-serif;
-    font-size:19px;
-    font-weight:700;
-    color:#111;
-    margin:0 0 10px;
-  }
-  .age-gate-card p{
-    font-family:'Inter',sans-serif;
-    font-size:15.5px;
-    line-height:1.7;
-    font-weight:600;
-    color:#1a1a1a;
-    margin:0 0 26px;
-  }
-  .age-gate-actions{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:32px;
-  }
-  .age-gate-actions button{
-    background:none;
-    border:none;
-    font-family:'Inter',sans-serif;
-    font-size:15px;
-    font-weight:700;
-    cursor:pointer;
-    padding:8px 4px;
-  }
-  .age-gate-leave{color:#444;}
-  .age-gate-continue{color:#c81e2c;}
-  body.age-gate-locked{overflow:hidden;height:100vh;}
-
   @media (prefers-reduced-motion: reduce){
     .bg-photo img{animation:none;}
     *{transition:none !important;}
   }
 </style>
 </head>
-<body class="age-gate-locked">
-
-<div class="age-gate-overlay" id="ageGate">
-  <div class="age-gate-card">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L1 21h22L12 2z"/><path d="M12 9v5"/><circle cx="12" cy="17.5" r="0.6" fill="#111" stroke="none"/></svg>
-    <h2>คำเตือน</h2>
-    <p>ก่อนการทำรายการสมัครสมาชิกท่านมีอายุเกิน 18+ และมีสติสติสัมปชัญญะครบถ้วน</p>
-    <div class="age-gate-actions">
-      <button class="age-gate-leave" onclick="window.location.href='https://www.google.com'">ออกจากหน้านี้</button>
-      <button class="age-gate-continue" onclick="document.getElementById('ageGate').style.display='none'; document.body.classList.remove('age-gate-locked');">ทำรายการต่อ</button>
-    </div>
-  </div>
-</div>
+<body>
 
 <div class="bg-photo"><img src="assets/profile.png" alt=""></div>
 <div class="bg-layer"></div>
@@ -649,7 +577,7 @@
 
   <!-- 6. ลิงก์ติดต่อภายนอก -->
   <div class="contact-cta">
-    <a class="cta-link" href="https://t.me/Thinaphata" target="_blank" rel="noopener">
+    <a class="cta-link" href="https://t.me/Artter92" rel="noopener">
       ส่งสลิปโอนเงิน แอดมิน Telegram คลิกที่นี่
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
     </a>
@@ -662,7 +590,7 @@
       <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 4L2.5 11.5l6 2 1.5 6 3-4 4.5 3.5L21 4z"/><path d="M8.5 13.5L18 6"/></svg></div>
       <span>Telegram<br>(กลุ่มฟรี)</span>
     </a>
-    <a class="contact-chip panel-3d" href="https://www.top4fans.com/NoirTEMPX"rel="noopener">
+    <a class="contact-chip panel-3d" href="https://www.top4fans.com/NoirTEMPX" target="_blank" rel="noopener">
       <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.7 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.7-4-9s1.5-6.5 4-9z"/></svg></div>
       <span>Top4Fans</span>
     </a>
